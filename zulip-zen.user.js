@@ -3,7 +3,7 @@
 // @description    A zen-like view for Zulip, toggle sidebars with 'z'.
 // @author         Winston Smith <winston@sequential.me> (sequential.me)
 // @author         blinry <sebastian@morr.cc> (morr.cc)
-// @version        0.2.0
+// @version        0.2.1
 // @include        https://*.zulip.com/*
 // @include        https://*.zulipchat.com/*
 // @include        https://chat.zulip.org/*
@@ -29,14 +29,16 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key == 'z') {
-      if (zenToggled) {
-        style.remove()
-      } else {
-        document.head.appendChild(style)
+    if (!(e.target.matches('input') || e.target.matches('textarea'))) {
+      if (e.key == 'z') {
+        if (zenToggled) {
+          style.remove()
+        } else {
+          document.head.appendChild(style)
+        }
+        zenToggled = !zenToggled
+        GM.setValue('zenToggled', zenToggled)
       }
-      zenToggled = !zenToggled
-      GM.setValue('zenToggled', zenToggled)
     }
   })
 })()
