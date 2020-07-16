@@ -15,28 +15,28 @@
 // ==/UserScript==
 
 ;(async () => {
-	let zenToggled = await GM.getValue('zenToggled', false)
+  let zenToggled = await GM.getValue('zenToggled', false)
 
-	var style = document.createElement('style')
-	style.type = 'text/css'
-	style.textContent = `
+  var style = document.createElement('style')
+  style.type = 'text/css'
+  style.textContent = `
   .column-left, .right-sidebar-items {
     display: none;
   }`
 
-	if (zenToggled) {
-		document.head.appendChild(style)
-	}
+  if (zenToggled) {
+    document.head.appendChild(style)
+  }
 
-	document.addEventListener('keydown', (e) => {
-		if (e.key == 'z') {
-			if (zenToggled) {
-				style.remove()
-			} else {
-				document.head.appendChild(style)
-			}
-			zenToggled = !zenToggled
-			GM.setValue('zenToggled', zenToggled)
-		}
-	})
+  document.addEventListener('keydown', (e) => {
+    if (e.key == 'z') {
+      if (zenToggled) {
+        style.remove()
+      } else {
+        document.head.appendChild(style)
+      }
+      zenToggled = !zenToggled
+      GM.setValue('zenToggled', zenToggled)
+    }
+  })
 })()
