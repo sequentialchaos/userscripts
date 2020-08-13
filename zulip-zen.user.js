@@ -3,7 +3,7 @@
 // @description    A zen-like view for Zulip, toggle sidebars with 'z'.
 // @author         Winston Smith <winston@sequential.me> (sequential.me)
 // @author         blinry <sebastian@morr.cc> (morr.cc)
-// @version        0.2.3
+// @version        0.2.4
 // @include        https://*.zulip.com/*
 // @include        https://*.zulipchat.com/*
 // @include        https://chat.zulip.org/*
@@ -37,9 +37,10 @@
     zenToggled = !zenToggled
     GM.setValue('zenToggled', zenToggled)
   }
-  
+
   document.addEventListener('keydown', (e) => {
-    if (!(e.target.matches('input') || e.target.matches('textarea'))) {
+    let emojiMenuOpen = document.getElementsByClassName('popover emoji-info-popover').length > 0
+    if (!(e.target.matches('input') || e.target.matches('textarea') || emojiMenuOpen)) {
       if (e.key == 'z') {
         toggleZen()
       }
