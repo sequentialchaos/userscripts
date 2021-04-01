@@ -12,18 +12,13 @@
 var style = document.createElement('style')
 style.type = 'text/css'
 style.textContent = `
-img {
-  background-url("");
-  filter: blur(1px);
-  //border: 20px solid black;
-}
-img::after {
-  content: "alt text";
+* {
+  background-size: 0% !important;
 }
 .alt-text-only {
-  display: block !important;
-  padding: 2px;
+  padding: 4px;
   color: black !important;
+  font-family: monospace;
 }
 `
 
@@ -31,19 +26,23 @@ function insertAfter(referenceNode, newNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
+var red = '#FF7575'
+var blue = '#75A3FF'
+
 // Replace each image with its alt text.
 document.head.appendChild(style)
 let clickTimer = setInterval(function () {
   for (let img of [...document.getElementsByTagName('img')]){
-      var overlay = document.createElement('div')
-      overlay.classList.add('alt-text-only')
-      overlay.innerHTML = img.alt == '' ? 'no alt text' : img.alt
-      overlay.width = img.width
-      overlay.height = img.height
-      overlay.style.position = 'relative'
-      overlay.style.background = img.alt == '' ? '#FF7575' : '#75A3FF'
+    var overlay = document.createElement('div')
+    overlay.classList.add('alt-text-only')
+    overlay.innerHTML = img.alt == '' ? 'no alt text' : img.alt
+    if (img.alt == '' || img.alt == "Image" || img.alt == "Embedded video") {
+      overlay.style.background = red
+    } else {
+      overlay.style.background = blue
+    }
 
-      insertAfter(img, overlay)
-      img.remove()
+    insertAfter(img, overlay)
+    img.remove()
   }
 }, 1000)
