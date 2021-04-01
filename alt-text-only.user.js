@@ -2,7 +2,7 @@
 // @name           Alt Text Only
 // @description    Replace images with their alt text.
 // @author         Winston Smith <winston@sequential.me> (sequential.me)
-// @version        0.0.1
+// @version        0.0.2
 // @include        https://*.*/*
 // @updateURL      https://github.com/sequentialchaos/userscripts/raw/master/alt-text-only.user.js
 // @run-at         document-start
