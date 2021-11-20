@@ -2,7 +2,7 @@
 // @name           Simple Wikipedia
 // @description    a simple view of Wikipedia
 // @author         Winston Smith <winston@sequential.me> (sequential.me)
-// @version        0.1.1
+// @version        0.2.0
 // @include        https://*.wikipedia.org/*
 // @updateURL      https://github.com/sequentialchaos/userscripts/raw/master/simple-wikipedia.user.js
 // @icon           https://en.wikipedia.org/static/favicon/wikipedia.ico
@@ -15,13 +15,14 @@ style.type = 'text/css'
 style.textContent = `
 body{
   --width: 50em;
-  --accent: #D9FCFF;
+  --accent: #aaa;
   max-width: var(--width);
   margin-left: max(0px, calc((100vw - var(--width))/2));
+  background-color: #91a3b0;
 }
 a {
   color: rgb(32, 33, 34) !important;
-  box-shadow: inset 0 -0.1em var(--accent);
+  text-shadow: 0 0 5px var(--accent);
 }
 a:hover {
   color: black;
@@ -29,6 +30,8 @@ a:hover {
 }
 #content {
   margin-left: 0;
+  background-color: #f2f3f4;
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2),0 10px 24px 0 rgba(0,0,0,0.19);
 }
 #p-search {
   float: right;
